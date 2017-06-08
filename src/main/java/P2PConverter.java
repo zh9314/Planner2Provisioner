@@ -24,6 +24,8 @@ import provisionerIn.EC2.EC2VM;
 import provisionerIn.EGI.EGIVM;
 import provisionerIn.EC2.EC2SubTopology;
 import provisionerIn.EGI.EGISubTopology;
+import provisionerIn.ExoGENI.ExoGENISubTopology;
+import provisionerIn.ExoGENI.ExoGENIVM;
 
 
 public class P2PConverter {
@@ -38,6 +40,8 @@ public class P2PConverter {
 			subTopology = new EC2SubTopology();
 		else if(cloudProvider.trim().toLowerCase().equals("egi"))
 			subTopology = new EGISubTopology();
+		else if(cloudProvider.trim().toLowerCase().equals("exogeni"))
+			subTopology = new ExoGENISubTopology();
 		else{
 			System.out.println("The "+cloudProvider+" is not supported yet!");
 			return null;
@@ -68,6 +72,8 @@ public class P2PConverter {
 			((EC2SubTopology)subTopology).components = new ArrayList<EC2VM>();
 		else if(cloudProvider.trim().toLowerCase().equals("egi"))
 			((EGISubTopology)subTopology).components = new ArrayList<EGIVM>();
+		else if(cloudProvider.trim().toLowerCase().equals("exogeni"))
+			((ExoGENISubTopology)subTopology).components = new ArrayList<ExoGENIVM>();
 		else{
 			System.out.println("The "+cloudProvider+" is not supported yet!");
 			return null;
